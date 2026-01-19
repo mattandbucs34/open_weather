@@ -84,7 +84,7 @@ const fetchOneCall = async (lat, long) => {
 };
 
 const geoCodeCity = async (city, state) => {
-    const cityData = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city},${state}&limit=1&appid=${open_weather_api}`);
+    const cityData = await fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${city},${state}&limit=1&appid=${open_weather_api}`);
 
     const data = await cityData.json();
     return { lat: data[0].lat, lon: data[0].lon };
@@ -119,7 +119,7 @@ const displayMultiCity = (multiCityWeatherData) => {
         parent.innerHTML +=
             `<div onclick='getNewCity(event, '${city}')' tabindex='${index + 2}'>
         <div class='mc-city'>${city}</div>
-        <img src='http://openweathermap.org/img/wn/${multiCityWeatherData[index].daily[0].weather[0].icon}.png' alt='${multiCityWeatherData[index].daily[0].weather[0].description}' />
+        <img src='https://openweathermap.org/img/wn/${multiCityWeatherData[index].daily[0].weather[0].icon}.png' alt='${multiCityWeatherData[index].daily[0].weather[0].description}' />
         <div>
           <div class='mc-high-temp'>High: ${Math.round(multiCityWeatherData[index].daily[0].temp.max)}</div>
           <div class='mc-low-temp'>Low: ${Math.round(multiCityWeatherData[index].daily[0].temp.min)}</div>
@@ -135,7 +135,7 @@ const displayCityHeader = (localWeatherData) => {
 
 const displayMainTemp = (currentLocationData, allLocalData) => {
     document.querySelector('#main-temp').innerHTML = `${Math.round(currentLocationData.main.temp)}&#176`;
-    document.querySelector('#main-temp-icon').innerHTML = `<img src='http://openweathermap.org/img/wn/${allLocalData.current.weather[0].icon}@4x.png' alt=${allLocalData.current.weather[0].description} />`;
+    document.querySelector('#main-temp-icon').innerHTML = `<img src='https://openweathermap.org/img/wn/${allLocalData.current.weather[0].icon}@4x.png' alt=${allLocalData.current.weather[0].description} />`;
     document.querySelector('#high-today div').innerHTML = `${Math.round(allLocalData.daily[0].temp.max)}&#176`;
     document.querySelector('#feels-like div').innerHTML = `${Math.round(allLocalData.current.feels_like)}&#176`;
     document.querySelector('#low-today div').innerHTML = `${Math.round(allLocalData.daily[0].temp.min)}&#176`;
@@ -165,7 +165,7 @@ const displayFirstFive = (allLocalData) => {
             <span>High: ${Math.round(day.temp.max)}&#176</span>
           </div>
           <div class='forecast-icon'>
-            <img src='http://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png' alt=${day.weather[0].description} />
+            <img src='https://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png' alt=${day.weather[0].description} />
           </div>
           <div class='forecast-low'>
             <span>Low: ${Math.round(day.temp.min)}&#176</span>

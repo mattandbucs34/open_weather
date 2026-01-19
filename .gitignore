@@ -1,3 +1,8 @@
 
 .env
 .env.key
+
+rootCA.key
+rootCA.pem
+
+key.js
